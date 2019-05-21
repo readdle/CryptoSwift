@@ -13,12 +13,6 @@
 //  - This notice may not be removed or altered from any source or binary distribution.
 //
 
-#if canImport(Darwin)
-import Darwin
-#else
-import Glibc
-#endif
-
 protocol _UInt32Type {}
 extension UInt32: _UInt32Type {}
 

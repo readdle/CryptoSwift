@@ -14,9 +14,12 @@
 //
 
 #if canImport(Darwin)
-    import Darwin
-#else
-    import Glibc
+import Darwin
+#elseif canImport(Glibc)
+import Glibc
+#elseif os(Windows)
+// Pass "-Xcc -D_CRT_RAND_S" to Swift compiler to enable rand_s
+import WinSDK
 #endif
 
 struct RandomBytesSequence: Sequence {
@@ -42,6 +45,10 @@ struct RandomBytesSequence: Sequence {
 
                 close(fd)
                 return value
+            #elseif os(Windows)
+                var randomResult: UInt32 = UINT_MAX
+                rand_s(&randomResult)
+                return UInt8(Double(randomResult) / Double(UInt32.max) * Double(UInt8.max))
             #else
                 return UInt8(arc4random_uniform(UInt32(UInt8.max) + 1))
             #endif

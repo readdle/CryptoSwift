@@ -14,12 +14,6 @@
 //  - This notice may not be removed or altered from any source or binary distribution.
 //
 
-#if canImport(Darwin)
-import Darwin
-#else
-import Glibc
-#endif
-
 extension FixedWidthInteger {
     @_transparent
     func bytes(totalBytes: Int = MemoryLayout<Self>.size) -> Array<UInt8> {

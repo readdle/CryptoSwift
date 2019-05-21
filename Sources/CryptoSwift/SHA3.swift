@@ -17,12 +17,6 @@
 //  http://keccak.noekeon.org/specs_summary.html
 //
 
-#if canImport(Darwin)
-import Darwin
-#else
-import Glibc
-#endif
-
 public final class SHA3: DigestType {
     let round_constants: Array<UInt64> = [
         0x0000000000000001, 0x0000000000008082, 0x800000000000808a, 0x8000000080008000,

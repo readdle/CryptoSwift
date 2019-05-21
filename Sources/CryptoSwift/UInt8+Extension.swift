@@ -13,12 +13,6 @@
 //  - This notice may not be removed or altered from any source or binary distribution.
 //
 
-#if canImport(Darwin)
-import Darwin
-#else
-import Glibc
-#endif
-
 public protocol _UInt8Type {}
 extension UInt8: _UInt8Type {}
 

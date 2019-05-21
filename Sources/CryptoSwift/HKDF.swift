@@ -18,8 +18,10 @@
 
 #if canImport(Darwin)
 import Darwin
-#else
+#elseif canImport(Glibc)
 import Glibc
+#elseif os(Windows)
+import ucrt
 #endif
 
 /// A key derivation function.
