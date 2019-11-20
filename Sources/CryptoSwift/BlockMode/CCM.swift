@@ -20,8 +20,8 @@
   import Darwin
 #elseif canImport(Glibc)
   import Glibc
-#elseif os(Windows)
-import ucrt
+#elseif canImport(ucrt)
+  import ucrt
 #endif
 
 /// Counter with Cipher Block Chaining-Message Authentication Code
